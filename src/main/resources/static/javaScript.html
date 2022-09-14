@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<link th:href="@{/css/content.css}" rel="stylesheet">
+    <script th:src="@{/js/test.js}"></script> 
+var formElement = document.getElementById('form1'),
+    resetButtonElement = document.getElementById('resetButton');
+
+// チェックされている要素の値を取得
+resetButtonElement.onclick = function() {
+	formElement.reset();
+};
+</html>

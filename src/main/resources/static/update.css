@@ -1,0 +1,123 @@
+@charset "UTF-8";
+
+
+html {
+    font-size:16px
+}
+
+
+body {
+    font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
+    background-color:white;
+}
+
+.box{
+    wide:100%;
+    text-align:center;
+}    
+
+
+.newregistration{
+	
+	width:100px;
+	padding:20px;
+	text-align:center;
+	line-height:40%;
+	justify-content:left;
+	padding:30px 30px
+	}
+	
+.search-corner{
+    
+    width:100px
+	padding:20px;
+	line-height:40%;	
+	text-align:center;
+	display:inline-block;
+	justify-content:right;
+	padding:30px 30px;
+}
+
+
+
+input[type="search"]{
+    
+    
+    height:2em;
+    line-height:5em;
+       
+}
+
+
+.list{
+	display: flex;
+	
+	
+	justify-content:space-around;
+}
+
+.list.newregistration{
+	box-sizing: border-box;
+	padding: 40px 80px;
+	justify-content:flex-start;
+}
+
+.list .search-corner{
+	box-sizing: border-box;
+	padding: 40px 80px;
+	justify-content:flex-end;
+}
+
+
+.id{
+	margin-top:30px;
+}
+
+
+
+
+.form-group{
+	width:120%;
+	
+}
+
+.form-group table{
+	width:100%;
+	margin-bottom:20px;
+}
+
+.form-group th{
+	
+	width:50%;
+}
+
+.form-group td{
+	width:100%
+	
+}
+
+
+input.form-control{
+	width:400px;
+}
+
+input.h-adr{
+	width:400px;
+}
+
+
+input[type= "text"]{
+	border: 1px;
+}
+
+table table -bordered table-hover{
+	width:400px;
+	
+}
+
+.container{
+	margin: auto;
+}
+
+
+

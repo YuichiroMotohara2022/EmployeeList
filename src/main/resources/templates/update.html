@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet"></link>
+ <script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+ <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+<title>更新</title>
+<script type="text/javascript"></script>
+<link rel="stylesheet" href="/update.css">
+</head>
+<body style="margin: auto; ">
+
+<div th:fragment="employeeList_contents">
+  <div class="page-header">
+   <div class="col-sm-5">
+    <div class="page-header" style="text-align: center">
+      <h1>社員情報更新</h1>
+    </div>
+   </div>
+  </div>
+  
+  
+  <form method ="post" th:action="@{/update}" th:object="${employeeData}"  enctype="multipart/form-data"> 
+    <table class="table table -bordered table-hover" border="1" width="70%">
+    
+     <tr>
+      <th class="active col-sm-3">名前</th>
+      <td>
+       <div class="form-group">
+         <input type="text" th:field="*{name}" class="form-control" th:value="*{name}" style="width:300px;"/>
+         <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red"></span>
+       </div>
+      </td>
+     </tr>
+
+
+      <tr>
+      <th class="active">性別</th>
+       <td>
+        <div class="form-group">
+          <input type="radio" name="gender" value="男" th:checked="*{gender} eq 1" class="radio" style="display: inline-block;" checked >男
+          <input type="radio" name="gender" value="女" th:checked="*{gender} eq 2" class="radio" style="display: inline-block; margin-left:5px;">女
+          <span th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" style="color: red"></span>
+         </div>
+      </td>
+     </tr>
+
+
+    <tr>
+      <th class="active col-sm-3">部署</th>
+      <td>
+       <div class="form-group">
+         <input type="text" th:field="*{department}" class="form-control" th:value="*{department}" style="width:300px;"/>
+         <span th:if="${#fields.hasErrors('department')}" th:errors="*{department}" style="color: red"></span>
+       </div>
+      </td>
+     </tr>
+
+
+    <tr>
+      <th class="active">生年月日</th>
+       <td>
+        <div class="from-group">
+         <input type="text" th:field="*{birthday}" class="form-control" th:value="*{birthday}" style="width:300px;"/>
+         <span th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}" style="color: red"></span>
+        </div>
+       </td>
+     </tr>
+
+     <tr>
+      <th class="active">メールアドレス</th>
+       <td>
+        <div class="from-group">
+         <input type="text" th:field="*{mail}" class="form-control" th:value="*{mail}" style="width:300px;"/>
+         <span th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}" style="color: red"></span>
+        </div>
+       </td>
+     </tr>
+     
+     
+     <tr>
+      <th class="active">電話番号</th>
+       <td>
+        <div class="from-group">
+         <input type="text" th:field="*{phoneNumber}" class="form-control" th:value="*{phoneNumber}" style="width:300px;"/>
+         <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" style="color: red"></span>
+        </div>
+       </td>
+     </tr>
+     
+     <tr>
+      <th class="active">住所</th>
+       <td>
+        <div class="from-group">
+         <input type="text" th:field="*{address}" class="form-control" th:value="*{address}" style="width:300px;"/>
+         <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}" style="color: red"></span>
+        </div>
+       </td>
+     </tr>
+     
+     <tr>
+      <th class="active">最終学歴</th>
+       <td>
+        <div class="from-group">
+         <input type="text" th:field="*{education}" class="form-control" th:value="*{education}" style="width:300px;"/>
+         <span th:if="${#fields.hasErrors('education')}" th:errors="*{education}" style="color: red"></span>
+        </div>
+       </td>
+     </tr>
+     
+     <tr>
+      <th class="active">特技</th>
+       <td>
+        <div class="from-group">
+         <input type="text" th:field="*{art}" class="form-control" th:value="*{art}" style="width:300px;"/>
+         <span th:if="${#fields.hasErrors('art')}" th:errors="*{art}" style="color: red"></span>
+        </div>
+       </td>
+     </tr>
+    
+    
+     <tr>
+      <th class="active">画像</th>
+       <td>
+        <div class="from-group">
+          <input type="file" th:field="*{tempimg}" class="form-control" accept="image/png, image/jpeg" />
+          
+        </div>
+       </td>
+     </tr>
+   
+    </table>
+     
+     
+   <!--   <ul>
+       <li th:each="error:${#fields.detailedErrors()}">
+        <span th:text="${error.message}">エラーメッセージ</span>
+       </li>
+      </ul>
+      --> 
+      
+      <input type="hidden" th:field="*{id}" th:value="*{id}">
+      <input type="hidden" th:field="*{img}" th:value="*{img}">
+      
+       <button class="btn btn-primary" type="submit" name="update" value="更新" style="margin-left:450px; ">更新</button>
+      
+       <a href="/empList" class="btn btn-primary" style="margin-left:300px; margin-right:250px;">キャンセル</a>
+
+    </form>
+    
+    </div>
+
+</body>
+</html>

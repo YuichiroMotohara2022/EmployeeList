@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootrtrap.min.css}" rel="stylesheet"></link>
+<script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+
+
+<title>login</title>
+<link rel="stylesheet" href="css/bootstrap.min.css" >
+</head>
+
+
+<div class="text-center" style="text-align: center">
+<h1>管理者ログイン画面</h1>
+<form method = "post" th:action="@{/login}"  style="text-align: center">
+
+<div th:if="${iserror}" style="color:red;">
+            <p>ログインできませんでした。やりなおしてください。</p>
+        </div>
+
+<p th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']}!=null"
+ th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"
+ class="text-danger">ログインエラーメッセージ</p>
+ 
+ 
+<label>メールアドレス</label>
+<p><input type="text" placeholder="メールアドレス" name= "mailAddress" required autofocus></p>
+
+
+<label>パスワード</label>
+<p><input type="password" placeholder="パスワード" name="password" required></p>
+
+<p><button class= "btn btn-primary" type="submit">ログイン</button></p>
+
+</form>
+
+</div>
+</html>

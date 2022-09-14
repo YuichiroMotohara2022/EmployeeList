@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org">
+<head
+  th:replace="/head :: head_fragment(title = '新規登録', scripts = ~{::script}, links = ~{::link})">
+ 
+<!--   <link rel="stylesheet" href="css/bootstrap.min.css" >-->
+ 
+ <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="../static/registration.css"/>
+</head>
+
+
+<body style="text-align: center; ">
+ 
+  <div class="container">
+    
+    
+  
+    <h1>新規登録</h1>  
+    
+    
+       <!---------enctype="multipart/form-data"はファイルを表示するときに絶対必要である。----->
+    <form style="margin-left:500px; margin-right:500px;" th:action="@{/send}" th:object="${NewRegistrationData}" th:method="post" enctype="multipart/form-data" class="h-adr" >
+      
+      
+      <div th:if="${validationError}" th:each="error : ${validationError}">
+       <label class="text-danger" th:text="${error}"></label>
+      </div>
+      
+      
+          
+      <div class="form-group"  th:classappend="${#fields.hasErrors('name')}?'has-error'">
+        <label>氏名：<span class="text-danger">必須</span></label>
+        <input type="text"  th:field="*{name}" class="form-control" style="margin-bottom:20px;"/>
+        <span class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red">名前を入力してください</span>
+      </div>
+      
+      <div class="form-group">
+        <label>性別：</label>
+        <for th:each="item : *{getGenderItems()}">
+             <input type="radio" th:value="${item.key}" th:text="${item.value}" th:field="*{gender}" style="margin-bottom:20px;"/>
+         </for>  
+      </div>
+      
+      <div class="form-group">
+        <label>部署：<span class="text-danger">必須</span></label>
+        <input type="text" th:field="*{department}" class="form-control" style="margin-bottom:20px;">
+        <span th:if="${#fields.hasErrors('department')}" th:errors="*{department}" style="color: red"></span>
+      </div>
+      
+      <div class="form-group" th:classappend="${#fields.hasErrors('birthday')}?'has-error'">
+        <label>生年月日：<span class="text-danger">必須</span></label>
+        <input type="text" th:field="*{birthday}" class="form-control" style="margin-bottom:20px;">
+        <span th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}" style="color: red"></span>
+      </div>
+      
+      <div class="form-group" th:classappend="${#fields.hasErrors('mail')}?'has-error'">
+        <label>メールアドレス：<span class="text-danger">必須</span></label>
+        <input type="text" th:field="*{mail}" class="form-control" style="margin-bottom:20px;">
+        <span th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}" style="color: red"></span>
+      </div>
+      
+      <div class="form-group" th:classappend="${#fields.hasErrors('phonenumber')}?'has-error'">
+        <label>電話番号：<span class="text-danger">必須</span></label>
+        <input type="text" max="" th:field="*{phonenumber}" class="form-control" style="margin-bottom:20px;">
+        <span th:if="${#fields.hasErrors('phonenumber')}" th:errors="*{phonenumber}" style="color: red"></span>
+      </div>
+      
+      
+      
+      
+      <div class="form-group" th:classappend="${#fields.hasErrors('address')}?'has-error'">
+      
+          <span class="p-country-name" style="display:none;">Japan</span>
+        〒<input type="text" class="p-postal-code" size="8" maxlength="8" style="margin-bottom:5px;"><br>
+                
+        <label>住所：<span class="text-danger">必須</span></label>
+        <input type="text" th:field="*{address}" class="form-control p-region p-locality p-street-address p-extended-address" style="margin-bottom:20px;">
+        <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}" style="color: red"></span>
+      </div>
+      
+      <div class="form-group" th:classappend="${#fields.hasErrors('education')}?'has-error'">
+        <label>最終学歴：<span class="text-danger">必須</span></label>
+        <input type="text" th:field="*{education}" class="form-control" style="margin-bottom:20px;">
+       <span th:if="${#fields.hasErrors('education')}" th:errors="*{education}" style="color: red"></span>
+      </div>
+      
+      <div class="form-group" th:classappend="${#fields.hasErrors('art')}?'has-error'">
+        <label>特技：<span class="text-danger">必須</span></label>
+        <input type="text" th:field="*{art}" class="form-control" style="margin-bottom:20px;">
+        <span th:if="${#fields.hasErrors('art')}" th:errors="*{art}" style="color: red"></span>
+      </div>
+      
+      <div class="form-group">
+        <label>Photos: </label>
+        <input type="file" name="image" accept="image/png, image/jpeg" style="margin-bottom:20px;"/>
+      </div>
+           
+      <br />
+      
+      <input type="submit" value="登録" class="btn btn-primary" >
+      
+      <div class="text-center">
+        <a href="/empList" class="btn btn-secondary" style="margin-top:30px; margin-bottom:30px;">キャンセル</a>
+      </div>
+      
+      </form>
+  
+     </div>
+  
+      
+      
+       
+       <script>EmployeeData.reset();</script>
+      
+      
+  
+   <script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
+</body>
+</html>
