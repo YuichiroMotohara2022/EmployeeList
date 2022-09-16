@@ -20,7 +20,7 @@
 
 　２，登録済社員情報一覧表
 
-![image](https://user-images.githubusercontent.com/113487302/190543505-75b24b70-0d48-40d0-93d9-d677c6255ff1.png)
+![image](https://user-images.githubusercontent.com/113487302/190563234-9c4f5aa5-c1cd-4c8b-af53-d2deaa0b8e64.png)
 
 本画面では登録済みの社員情報を一覧することができます。
 
@@ -55,6 +55,8 @@
 
 また、生年月日は0000/00/00の形式、メールアドレスは0000@000.comなどのメール形式、電話番号は１１桁までで数値でなければエラーメッセージが表示されて登録できないようにバリデーションチェックをかけております。
 
+また、住所記載フォーム上部にある郵便番号マーク（〒）横のフォームに郵便番号を入力すると、住所が市区町村の箇所まで自動で住所記入欄に入力されます。
+
 
 　４，詳細検索画面
  
@@ -65,7 +67,7 @@
 
 　５，更新画面
 
-![image](https://user-images.githubusercontent.com/113487302/190550134-d7bcaea1-5626-4c21-b4be-c9556e0007f4.png)
+![image](https://user-images.githubusercontent.com/113487302/190563376-986e1bea-336e-4a11-82d3-bd2bdb4fd8b1.png)
 
 各社員情報の更新ボタンを押すと本画面に遷移します。
 
